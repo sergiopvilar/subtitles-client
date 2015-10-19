@@ -1,0 +1,58 @@
+{
+  "name": "atomshell-react-boilerplate",
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
+    ]
+  },
+  "version": "0.0.1",
+  "description": "Electron(Atom-Shell) app using React.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "lint": "gulp lint",
+    "syntax": "gulp check-syntax",
+    "refactor": "gulp refactor"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/airtoxin/atomshell-react-boilerplate.git"
+  },
+  "author": "airtoxin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/airtoxin/atomshell-react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/airtoxin/atomshell-react-boilerplate",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "q": "^1.4.1",
+    "q-io": "^1.13.1",
+    "react": "^0.14.0-beta3",
+    "react-desktop": "^0.1.31",
+    "react-dom": "^0.14.0",
+    "reactify": "^1.1.1",
+    "request": "^2.65.0",
+    "run-sequence": "^1.1.2",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babelify": "^6.3.0",
+    "browserify": "^11.0.1",
+    "gulp": "^3.9.0",
+    "gulp-atom": "^0.1.0",
+    "gulp-babel": "^5.3.0",
+    "gulp-copy": "0.0.2",
+    "gulp-eslint": "^1.0.0",
+    "gulp-install": "^0.4.0",
+    "gulp-jscs": "^3.0.0",
+    "gulp-less": "^3.0.3",
+    "require-dir": "^0.3.0"
+  }
+}

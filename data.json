@@ -1,0 +1,12 @@
+{
+  "series": [
+    {
+      "name": "The Last Kingdom",
+      "languages": ["pt-BR", "pt", "en-US"]
+    },
+    {
+      "name": "The Knick",
+      "languages": ["pt-BR"]
+    }
+  ]
+}
