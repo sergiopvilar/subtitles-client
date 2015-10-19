@@ -12,11 +12,7 @@ var SeriesList = React.createClass({
   },
   getSubs: function(index, callback) {
     remote.require('./src/index.js')(index, function(found) {
-      var subs = [];
-      found.forEach(function(item){
-        subs.push(item.text)
-      });
-      callback(subs);
+      callback(found);
     });
   },
   componentDidMount: function() {

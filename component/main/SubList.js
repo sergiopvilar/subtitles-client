@@ -3,7 +3,9 @@ import React from 'react'
 var SubList = React.createClass({
   displayName: 'SubList',
   handleClick: function(i) {
-    console.log('You clicked: ' + this.props.items[i]);
+    var remote = window.require('remote');
+    var shell = remote.require('shell');
+    shell.openExternal(this.props.items[i].url);
   },
   render: function() {
 
@@ -30,7 +32,8 @@ var SubList = React.createClass({
           { this.props.items.map(function(item, i) {
             return (
               <tr key={i}>
-                <td>{item}</td>
+                <td>
+                <a onClick={this.handleClick.bind(this, i)} key={i}>{item.text}</a></td>
               </tr>);
           }, this)}
           {loading}
