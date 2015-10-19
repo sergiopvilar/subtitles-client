@@ -39,7 +39,7 @@ class LegendasTVExtractor extends Extractor {
         var link = $(this).find('p').eq(0);
         that.found.push({
           text: link.text(),
-          url: link.find('a').attr('href')
+          url: 'http://legendas.tv/'+link.find('a').attr('href')
         });
       });
       return true;
