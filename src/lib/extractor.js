@@ -9,14 +9,14 @@ class Extractor {
   }
 
   getPageContents(serieName, options) {
-    if(!options) {
+    var lower = (options === true) ? true : false;
+    if(!options || options === true)
       options = {};
-    }
     options.url = this.baseURL + serieName;
     options.method = 'GET';
-
     return HTTP.read(options).then(function(response){
-       return [cheerio.load(response.toString()), serieName];
+      var res = (lower) ? response.toString().toLowerCase() : response.toString();
+      return [cheerio.load(res), serieName];
      });
   }
 
