@@ -2,11 +2,18 @@
   "series": [
     {
       "name": "The Last Kingdom",
-      "languages": ["pt-BR", "pt", "en-US"]
+      "languages": ["pt-BR", "pt", "en-US"],
+      "season": 1
     },
     {
       "name": "The Knick",
-      "languages": ["pt-BR"]
+      "languages": ["pt-BR"],
+      "season": 2
+    },
+    {
+      "name": "How to get away with murder",
+      "languages": ["pt-BR"],
+      "season": 2
     }
   ]
 }

@@ -13,12 +13,19 @@ class LegendasTVExtractor extends Extractor {
   }
 
   extract(series, index) {
-    this.series = series;
+    this.series = series
+    this.serie = series[index]
     return this.processSerie(series[index]);
   }
 
+  getSeason() {
+    var s = parseInt(that.serie.season);
+    if(s == 0) return '';
+    return (s < 10) ? 'S0'+s : 'S'+s;
+  }
+
   processSerie(item) {
-    return that.getPageContents('busca/'+item.name)
+    return that.getPageContents('busca/'+item.name, true)
     .then(that.parseContent)
     .then(function() {
       return that.found;
@@ -35,11 +42,14 @@ class LegendasTVExtractor extends Extractor {
       }
     }).then(_data => {
       const $ = _data[0];
+      var season = that.getSeason();
       $('.f_left').each(function(i, el){
         var link = $(this).find('p').eq(0);
+        var href = link.find('a').attr('href').split('download/')[1].split('/');
+        if(link.text().indexOf(season) > -1)
         that.found.push({
           text: link.text(),
-          url: 'http://legendas.tv/'+link.find('a').attr('href')
+          url: 'http://legendas.tv/downloadarquivo/'+href[0]
         });
       });
       return true;
@@ -51,7 +61,7 @@ class LegendasTVExtractor extends Extractor {
     let [$, serieName] = data;
     serieName = serieName.replace('busca/','');
     let seasons = [];
-    $('.slider_wrapper .item:contains("'+serieName+'") a').each(function(i, item) {
+    $('.slider_wrapper .item:contains("'+serieName.toLowerCase()+'") a').each(function(i, item) {
       seasons.push($(this).attr('data-filme'));
     });
     return q.all(seasons.map(that.processSeason))
