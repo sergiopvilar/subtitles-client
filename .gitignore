@@ -1,2 +1,3 @@
-/dist
+/compile
 node_modules
+db.json

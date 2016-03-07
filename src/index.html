@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Subtitle Manager</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/photon.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Javascript -->
+    <!-- <script src="template-app/js/menu.js" charset="utf-8"></script> -->
+  </head>
+  <body ng-app="series-subtitles">
+
+    <div class="window">
+      <header class="toolbar toolbar-header">
+
+        <div class="toolbar-actions">
+
+          <a href="#/add" class="btn btn-default">
+            <span class="icon icon-plus"></span>
+          </a>
+
+        </div>
+
+      </header>
+      <div class="window-content">
+
+        <div class="pane-group">
+          <div class="pane pane-sm sidebar" ng-controller="SeriesListController">
+            <nav class="nav-group">
+              <h5 class="nav-group-title">TV Shows</h5>
+              <span class="nav-group-item" ng-repeat="serie in series" ng-click="load(serie.id)">
+                {{serie.name}}
+              </span>
+            </nav>
+          </div>
+
+          <div class="pane">
+            <div ng-view></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./vendor.js"></script>
+    <script type="text/javascript" src="./renderer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<div class="view-border">
+
+<form ng-submit="submit()">
+  <div class="form-group">
+    <label>TV Show</label>
+    <input type="text" ng-model="name" class="form-control" placeholder="TV Show name">
+  </div>
+  <div class="form-group">
+    <label>Season</label>
+    <select ng-model="season" ng-options="item for item in seasons" class="form-control"></select>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-form btn-primary">Add TV Show</button>
+  </div>
+</form>
+</div>

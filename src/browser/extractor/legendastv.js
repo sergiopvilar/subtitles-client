@@ -1,4 +1,4 @@
-import Extractor from '../lib/extractor.js'
+import Extractor from './extractor.js'
 import q from 'q'
 let that;
 
@@ -12,10 +12,9 @@ class LegendasTVExtractor extends Extractor {
     that = this;
   }
 
-  extract(series, index) {
-    this.series = series
-    this.serie = series[index]
-    return this.processSerie(series[index]);
+  extract(serie) {
+    this.serie = serie
+    return this.processSerie(serie);
   }
 
   getSeason() {
@@ -28,7 +27,10 @@ class LegendasTVExtractor extends Extractor {
     return that.getPageContents('busca/'+item.name, true)
     .then(that.parseContent)
     .then(function() {
-      return that.found;
+      return {
+        serie_id: that.serie.id,
+        subtitles: that.found
+      };
     })
     .catch(error =>{
       console.log(error);

@@ -1,0 +1,24 @@
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>
+        Subtitle
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr ng-repeat="sub in subtitles">
+      <td ng-click="open(sub.url)">{{sub.text}}</td>
+    </tr>
+
+    <tr ng-show="!subtitles.length && loading">
+      <td>Loading...</td>
+    </tr>
+
+    <tr ng-show="!subtitles.length && !loading">
+      <td>Cannot find any subtitles</td>
+    </tr>
+
+  </tbody>
+</table>
