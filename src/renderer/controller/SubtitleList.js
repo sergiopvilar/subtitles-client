@@ -22,14 +22,9 @@ app.controller('SubtitleListController', ['$scope', '$routeParams', ($scope, $ro
   Extractor($routeParams.serieId).then(result => {
 
     [].concat.apply([], result).forEach(item => {
-
-      var existent = Subtitles.find({
-        text: item.text
-      });
-
+      var existent = Subtitles.find({text: item.text});
       if(existent || item.serieid != $routeParams.serieId) return;
       Subtitles.push(item);
-
     });
 
     $scope.loading = false;
