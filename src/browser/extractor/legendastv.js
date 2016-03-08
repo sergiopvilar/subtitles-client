@@ -27,10 +27,7 @@ class LegendasTVExtractor extends Extractor {
     return that.getPageContents('busca/'+item.name, true)
     .then(that.parseContent)
     .then(function() {
-      return {
-        serie_id: that.serie.id,
-        subtitles: that.found
-      };
+      return that.found
     })
     .catch(error =>{
       console.log(error);
@@ -50,6 +47,7 @@ class LegendasTVExtractor extends Extractor {
         var href = link.find('a').attr('href').split('download/')[1].split('/');
         if(link.text().indexOf(season) > -1)
         that.found.push({
+          serieid: that.serie.id,
           text: link.text(),
           url: 'http://legendas.tv/downloadarquivo/'+href[0],
           source: 'LegendasTV'

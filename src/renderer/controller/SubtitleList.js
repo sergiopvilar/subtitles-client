@@ -19,31 +19,20 @@ app.controller('SubtitleListController', ['$scope', '$routeParams', ($scope, $ro
     shell.openExternal(url);
   };
 
-  Extractor($routeParams.serieId).then(results => {
+  Extractor($routeParams.serieId).then(result => {
 
-    $scope.loading = false;
-    if(results[0].serie_id != $routeParams.serieId) return;
+    [].concat.apply([], result).forEach(item => {
 
-    results.forEach(result => {
-
-      result.subtitles.forEach(item => {
-
-        var existent = Subtitles.find({
-          text: item.text
-        });
-
-        if(!existent)
-          Subtitles.push({
-            serieid: result.serie_id,
-            text: item.text,
-            url: item.url,
-            source: item.source
-          });
-
+      var existent = Subtitles.find({
+        text: item.text
       });
+
+      if(existent || item.serieid != $routeParams.serieId) return;
+      Subtitles.push(item);
 
     });
 
+    $scope.loading = false;
     $scope.subtitles = retrieveSubtitles();
     $scope.$apply();
 

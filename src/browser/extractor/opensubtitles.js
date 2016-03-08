@@ -16,12 +16,6 @@ class OpenSubtitlesExtractor extends Extractor {
     return OP.api.login()
     .then(that.searchForTitle)
     .then(that.processTitles)
-    .then(function(found) {
-      return {
-        serie_id: that.serie.id,
-        subtitles: found
-      };
-    })
     .catch(error =>{
       console.log(error);
     });
@@ -42,6 +36,7 @@ class OpenSubtitlesExtractor extends Extractor {
       const withoutSpace = withSpace.replace(/ /g, '.')
       if(item.SubFileName.indexOf(withSpace) > -1 || item.SubFileName.indexOf(withoutSpace) > -1)
         valids.push({
+          serieid: that.serie.id,
           text: item.SubFileName.replace('.srt', ''),
           url: item.ZipDownloadLink,
           source: 'OpenSubtitles'
