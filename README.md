@@ -4,7 +4,7 @@ Browse and download subtitles from your favourite TV Shows.
 
 ![Screenshot](docs/screenshot.png)
 
-Electron + AngularJS + ES6 = :heart:
+Electron + AngularJS + ES2015 = :heart:
 
 # Contributing
 1. `npm install -g electron-prebuilt`
