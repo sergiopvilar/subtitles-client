@@ -11,32 +11,38 @@ app.controller('SubtitleListController', ['$scope', '$routeParams', function ($s
     shell.openExternal(url);
   };
 
-  Extractor($routeParams.serieId, function(result){
+  Extractor($routeParams.serieId).then(results => {
 
     $scope.loading = false;
-    if(result.serie_id != $routeParams.serieId) return;
+    if(results[0].serie_id != $routeParams.serieId) return;
 
-    result.subtitles.forEach(function(item) {
+    results.forEach(result => {
 
-      var existent = Subtitles.find({
-        serieid: $routeParams.serieId,
-        text: item.text,
-        url: item.url
-      });
+      result.subtitles.forEach(function(item) {
 
-      if(!existent)
-        Subtitles.push({
+        var existent = Subtitles.find({
           serieid: $routeParams.serieId,
           text: item.text,
           url: item.url
         });
 
-    })
+        if(!existent)
+          Subtitles.push({
+            serieid: result.serie_id,
+            text: item.text,
+            url: item.url,
+            source: item.source
+          });
+
+      });
+
+    });
 
     $scope.subtitles = Subtitles.filter({serieid: $routeParams.serieId});
     $scope.$apply();
 
+  }).catch(error => {
+    console.log(error);
   });
-
 
 }]);

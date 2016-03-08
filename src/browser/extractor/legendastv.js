@@ -51,7 +51,8 @@ class LegendasTVExtractor extends Extractor {
         if(link.text().indexOf(season) > -1)
         that.found.push({
           text: link.text(),
-          url: 'http://legendas.tv/downloadarquivo/'+href[0]
+          url: 'http://legendas.tv/downloadarquivo/'+href[0],
+          source: 'LegendasTV'
         });
       });
       return true;

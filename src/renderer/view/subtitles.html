@@ -4,20 +4,24 @@
       <th>
         Subtitle
       </th>
+      <th>
+        Source
+      </th>
     </tr>
   </thead>
   <tbody>
 
-    <tr ng-repeat="sub in subtitles">
-      <td ng-click="open(sub.url)">{{sub.text}}</td>
+    <tr ng-repeat="sub in subtitles" ng-click="open(sub.url)">
+      <td>{{sub.text}}</td>
+      <td>{{sub.source}}</td>
     </tr>
 
     <tr ng-show="!subtitles.length && loading">
-      <td>Loading...</td>
+      <td colspan="2">Loading...</td>
     </tr>
 
     <tr ng-show="!subtitles.length && !loading">
-      <td>Cannot find any subtitles</td>
+      <td colspan="2">Cannot find any subtitles</td>
     </tr>
 
   </tbody>
