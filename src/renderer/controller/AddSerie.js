@@ -1,7 +1,7 @@
 const Series = remote.require('./browser/model/Serie.js');
 const uuid = remote.require('uuid');
 
-app.controller('AddSerieController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+app.controller('AddSerieController', ['$scope', '$rootScope', ($scope, $rootScope) => {
 
   $scope.seasons = [];
   for(var i = 1; i <= 12; i++) {
@@ -11,7 +11,7 @@ app.controller('AddSerieController', ['$scope', '$rootScope', function ($scope, 
   $scope.name = '';
   $scope.season = '01';
 
-  $scope.submit = function() {
+  $scope.submit = () => {
 
     if($scope.name == '') return;
 

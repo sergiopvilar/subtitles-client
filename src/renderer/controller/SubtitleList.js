@@ -2,7 +2,7 @@ const Extractor = remote.require('./browser/index.js');
 const Subtitles = remote.require('./browser/model/Subtitle.js');
 const shell = remote.shell;
 
-app.controller('SubtitleListController', ['$scope', '$routeParams', function ($scope, $routeParams) {
+app.controller('SubtitleListController', ['$scope', '$routeParams', ($scope, $routeParams) => {
 
   function retrieveSubtitles() {
     return Subtitles
@@ -15,7 +15,7 @@ app.controller('SubtitleListController', ['$scope', '$routeParams', function ($s
   $scope.subtitles = retrieveSubtitles();
   $scope.loading = true;
 
-  $scope.open = function(url) {
+  $scope.open = (url) => {
     shell.openExternal(url);
   };
 
@@ -26,7 +26,7 @@ app.controller('SubtitleListController', ['$scope', '$routeParams', function ($s
 
     results.forEach(result => {
 
-      result.subtitles.forEach(function(item) {
+      result.subtitles.forEach(item => {
 
         var existent = Subtitles.find({
           text: item.text
