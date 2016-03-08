@@ -18,7 +18,7 @@ class LegendasTVExtractor extends Extractor {
   }
 
   getSeason() {
-    var s = parseInt(that.serie.season);
+    let s = parseInt(that.serie.season);
     if(s == 0) return '';
     return (s < 10) ? 'S0'+s : 'S'+s;
   }
@@ -41,10 +41,10 @@ class LegendasTVExtractor extends Extractor {
       }
     }).then(_data => {
       const $ = _data[0];
-      var season = that.getSeason();
+      const season = that.getSeason();
       $('.f_left').each(function(i, el){
-        var link = $(this).find('p').eq(0);
-        var href = link.find('a').attr('href').split('download/')[1].split('/');
+        let link = $(this).find('p').eq(0);
+        let href = link.find('a').attr('href').split('download/')[1].split('/');
         if(link.text().indexOf(season) > -1)
         that.found.push({
           serieid: that.serie.id,
