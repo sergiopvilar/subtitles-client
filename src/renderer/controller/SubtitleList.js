@@ -4,7 +4,15 @@ const shell = remote.shell;
 
 app.controller('SubtitleListController', ['$scope', '$routeParams', function ($scope, $routeParams) {
 
-  $scope.subtitles = Subtitles.filter({serieid: $routeParams.serieId});
+  function retrieveSubtitles() {
+    return Subtitles
+      .chain()
+      .filter({serieid: $routeParams.serieId})
+      .sortBy('text')
+      .value();
+  }
+
+  $scope.subtitles = retrieveSubtitles();
   $scope.loading = true;
 
   $scope.open = function(url) {
@@ -21,9 +29,7 @@ app.controller('SubtitleListController', ['$scope', '$routeParams', function ($s
       result.subtitles.forEach(function(item) {
 
         var existent = Subtitles.find({
-          serieid: $routeParams.serieId,
-          text: item.text,
-          url: item.url
+          text: item.text
         });
 
         if(!existent)
@@ -38,7 +44,7 @@ app.controller('SubtitleListController', ['$scope', '$routeParams', function ($s
 
     });
 
-    $scope.subtitles = Subtitles.filter({serieid: $routeParams.serieId});
+    $scope.subtitles = retrieveSubtitles();
     $scope.$apply();
 
   }).catch(error => {
