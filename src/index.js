@@ -16,10 +16,10 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
 
 	mainWindow = new BrowserWindow({
-		width: 480,
-		height: 360,
-		'min-width': 480,
-		'min-height': 280,
+		width: 1020,
+		height: 640,
+		'min-width': 1020,
+		'min-height': 640,
 		frame: true
 	});
 	console.log('file://' + __dirname + '/index.html');
