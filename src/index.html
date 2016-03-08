@@ -30,7 +30,7 @@
           <div class="pane pane-sm sidebar" ng-controller="SeriesListController">
             <nav class="nav-group">
               <h5 class="nav-group-title">TV Shows</h5>
-              <span class="nav-group-item" ng-repeat="serie in series" ng-click="load(serie.id)">
+              <span ng-class="{'nav-group-item': true, active: selected == serie.id}" ng-repeat="serie in series" ng-click="load(serie.id)">
                 {{serie.name}} S{{serie.season}}
               </span>
             </nav>
