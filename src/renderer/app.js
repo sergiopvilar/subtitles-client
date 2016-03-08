@@ -1,8 +1,7 @@
 const app = angular.module('series-subtitles', ['ngRoute']);
 const remote = require('electron').remote;
 
-app.config(['$routeProvider',
-  function($routeProvider) {
+app.config(['$routeProvider', $routeProvider => {
     $routeProvider.
       when('/add', {
         templateUrl: 'renderer/view/add.html',
