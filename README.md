@@ -7,6 +7,7 @@ Browse and download subtitles from your favourite TV Shows.
 Electron + AngularJS + ES6 = :heart:
 
 # Contributing
-1. `npm i`
-2. `npm start`
+1. `npm install -g electron-prebuilt`
+2. `npm i`
+3. `npm start`
 4. reload application (⌘+R)
