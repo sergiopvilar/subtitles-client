@@ -17,6 +17,7 @@ gulp.task('watch', ['build'], function() {
   gulp.watch( [ './src/renderer/**/*.js'], [ 'renderer' ] );
   gulp.watch( [ './src/**/*.js'], [ 'es6' ] );
   gulp.watch( [ './src/renderer/**/*.html'], [ 'views' ] );
+  gulp.watch( [ './assets/**/*.scss'], [ 'sass' ] );
   // return watch('./src', function() {
   //   gulp.start('build');
   // });
