@@ -31,6 +31,7 @@
             <nav class="nav-group">
               <h5 class="nav-group-title">TV Shows</h5>
               <span ng-class="{'nav-group-item': true, active: selected == serie.id}" ng-repeat="serie in series" ng-click="load(serie.id)">
+                <span class="icon icon-monitor"></span>
                 {{serie.name}} S{{serie.season}}
               </span>
             </nav>
