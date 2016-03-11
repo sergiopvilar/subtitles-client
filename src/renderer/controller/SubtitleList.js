@@ -1,8 +1,9 @@
 const Extractor = remote.require('./browser/index.js');
 const Subtitles = remote.require('./browser/model/Subtitle.js');
+const Serie = remote.require('./browser/model/Serie.js');
 const shell = remote.shell;
 
-app.controller('SubtitleListController', ['$scope', '$routeParams', ($scope, $routeParams) => {
+app.controller('SubtitleListController', ['$scope', '$rootScope','$routeParams', '$location', ($scope, $rootScope, $routeParams, $location) => {
 
   function retrieveSubtitles() {
     return Subtitles
@@ -13,10 +14,17 @@ app.controller('SubtitleListController', ['$scope', '$routeParams', ($scope, $ro
   }
 
   $scope.subtitles = retrieveSubtitles();
+  $scope.tvshow = Serie.find({id: $routeParams.serieId})
   $scope.loading = true;
 
   $scope.open = (url) => {
     shell.openExternal(url);
+  };
+
+  $scope.removeSerie = () => {
+    Serie.remove({id: $scope.tvshow.id});
+    $rootScope.$broadcast('serie:changed');
+    $location.path( "/");
   };
 
   Extractor($routeParams.serieId).then(result => {

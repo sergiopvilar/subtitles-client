@@ -1,28 +1,39 @@
-<table class="table-striped">
-  <thead>
-    <tr>
-      <th>
-        Subtitle
-      </th>
-      <th>
-        Source
-      </th>
-    </tr>
-  </thead>
-  <tbody>
 
-    <tr ng-repeat="sub in subtitles" ng-click="open(sub.url)">
-      <td>{{sub.text}}</td>
-      <td>{{sub.source}}</td>
-    </tr>
+<section id="listSubtitles" class="content">
 
-    <tr ng-show="!subtitles.length && loading">
-      <td colspan="2">Loading...</td>
-    </tr>
+  <header>
+    <h2>{{tvshow.name}} <small>S{{tvshow.season}}</small></h2>
+    <button ng-click="removeSerie()" class="btn btn-large btn-negative">Remove TV Show</button>
+  </header>
 
-    <tr ng-show="!subtitles.length && !loading">
-      <td colspan="2">Cannot find any subtitles</td>
-    </tr>
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th>
+          Subtitle
+        </th>
+        <th>
+          Source
+        </th>
+      </tr>
+    </thead>
+    <tbody>
 
-  </tbody>
-</table>
+      <tr ng-repeat="sub in subtitles" ng-click="open(sub.url)">
+        <td>{{sub.text}}</td>
+        <td>{{sub.source}}</td>
+      </tr>
+
+      <tr ng-show="!subtitles.length && loading">
+        <td colspan="2">Loading...</td>
+      </tr>
+
+      <tr ng-show="!subtitles.length && !loading">
+        <td colspan="2">Cannot find any subtitles</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+</section>

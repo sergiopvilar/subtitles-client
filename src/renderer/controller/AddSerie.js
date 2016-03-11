@@ -21,7 +21,7 @@ app.controller('AddSerieController', ['$scope', '$rootScope', ($scope, $rootScop
       season: $scope.season
     });
 
-    $rootScope.$broadcast('serie:added');
+    $rootScope.$broadcast('serie:changed');
 
   }
 

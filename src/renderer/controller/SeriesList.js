@@ -10,7 +10,7 @@ app.controller('SeriesListController', ['$scope', '$rootScope', '$location', ($s
     $location.path( "/subtitles/"+id );
   };
 
-  $rootScope.$on('serie:added', () => {
+  $rootScope.$on('serie:changed', () => {
     $scope.series = Series.chain().value();
   });
 

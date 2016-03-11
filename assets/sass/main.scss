@@ -5,3 +5,28 @@
 button {
   cursor:pointer
 }
+
+#listSubtitles {
+
+  header {
+    padding:20px;
+    border-bottom:1px solid #ddd;
+    position: relative;
+
+    .btn-negative {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor:pointer;
+    }
+
+    h2 {
+      margin:0;
+      small {
+        color:#A2A1A1;
+      }
+    }
+
+  }
+
+}
