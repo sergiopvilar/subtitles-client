@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp; electron ./compile",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "electron-packager . Subcatch --platform=darwin --arch=x64 --version=0.35.6 --out=./build",
+    "release": "electron-release --app=./build/Subcatch-darwin-x64/Subcatch.app --token=$GITHUB_TOKEN --repo=sergiovilar/subtitles-client --output=./build/Catcher.zip"
   },
   "repository": {
     "type": "git",
