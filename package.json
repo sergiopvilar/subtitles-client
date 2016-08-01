@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "config": {
+    "electronVersion": "1.1.0"
+  },
   "scripts": {
     "start": "gulp; electron ./compile",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "electron-packager . Subcatch --platform=darwin --arch=x64 --version=0.35.6 --out=./build",
-    "release": "electron-release --app=./build/Subcatch-darwin-x64/Subcatch.app --token=$GITHUB_TOKEN --repo=sergiovilar/subtitles-client --output=./build/Catcher.zip"
+    "build": "gulp; cp -R node_modules ./compile",
+    "package": "npm run build; node pkg.js --platform=darwin"
   },
   "repository": {
     "type": "git",
@@ -32,13 +35,16 @@
     "uuid": "^2.0.1"
   },
   "devDependencies": {
+    "electron-prebuilt": "^1.1.0",
     "babel-preset-es2015": "^6.5.0",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
     "gulp-copy": "0.0.2",
     "gulp-sass": "^2.2.0",
     "gulp-watch": "^4.3.5",
+    "optimist": "^0.6.1",
     "require-dir": "^0.3.0",
-    "rimraf": "^2.5.2"
+    "rimraf": "^2.5.2",
+    "shelljs": "^0.7.3"
   }
 }

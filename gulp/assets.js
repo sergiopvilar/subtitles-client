@@ -9,6 +9,12 @@ var vendors = [
   'node_modules/angular-route/angular-route.js',
 ];
 
+
+gulp.task('copy-package', ['build'], function(cb) {
+  return gulp.src('package.json')
+  .pipe(copy('./compile'));
+});
+
 gulp.task('sass', function () {
   return gulp.src('./assets/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
@@ -50,4 +56,4 @@ gulp.task('vendor', function() {
     .pipe(gulp.dest('./compile'));
 });
 
-gulp.task('assets', ['index', 'renderer', 'sass', 'style', 'font', 'vendor', 'views']);
+gulp.task('assets', ['index', 'renderer', 'sass', 'style', 'font', 'vendor', 'views', 'copy-package']);

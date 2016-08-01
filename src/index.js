@@ -1,11 +1,6 @@
 'use babel';
 
-import app from 'app'
-import Menu from 'menu'
-import MenuItem from 'menu-item'
-import BrowserWindow from 'browser-window'
-
-require('crash-reporter').start();
+import {app, BrowserWindow} from 'electron'
 
 let mainWindow = null;
 
@@ -23,7 +18,7 @@ app.on('ready', () => {
     frame: true
   });
 
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
   mainWindow.on('closed', () => {
     mainWindow = null;
   });

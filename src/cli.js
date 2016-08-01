@@ -5,7 +5,7 @@ let s = Serie.filter({name: 'Vikings'})[0];
 
 new op().extract(s).then(found => {
   console.log('Found:');
-  console.log(found);  
+  console.log(found);
 }).catch(error => {
   console.log(error);
 })
